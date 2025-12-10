@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arima Interactive Specs</title>
+  <style>
+    body{background:#a4c0d1;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:40px}
+    .spec-headline{margin:0 0 10px;text-align:center;font-size:2.4rem;font-weight:700;color:#1f2937}
+    .spec-subheadline{text-align:center;font-size:1.1rem;color:#4b5563;margin:0 0 30px}
+
+    .interactive-spec-section{position:relative;width:100%;max-width:1080px;margin:40px auto}
+    .interactive-spec-section{background:transparent;position:relative;max-width:800px;margin:0 auto}
+    .interactive-spec-section img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+      /* Make the light bluish-gray background transparent */
+      filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+    }
+    /* Transparent container for the watch page */
+    .watch-container{
+      position:relative;
+      background:transparent;
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .hotspot{position:absolute;z-index:10;width:clamp(18px,2.2vw,26px);height:clamp(18px,2.2vw,26px)}
+    .hotspot-pulse{width:100%;height:100%;background:rgba(255,255,255,.95);color:#000;font-size:clamp(12px,1.4vw,18px);font-weight:700;text-align:center;line-height:clamp(18px,2.2vw,26px);border-radius:50%;cursor:pointer;box-shadow:0 0 0 rgba(255,255,255,.4);animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}70%{box-shadow:0 0 0 16px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+
+    /* ——— hotspot positions tuned for this exact render ——— */
+    /* Crystal */
+    .hotspot-crystal { top: 44.2%; left: 38.4%; }   /* center of the sapphire */
+    /* Dial */
+    .hotspot-dial { top: 44.6%; left: 46.5%; }
+    /* Lume */
+    .hotspot-lume { top: 40.4%; left: 50.1%; }
+    /* Date */
+    .hotspot-date { top: 52.7%; left: 43.4%; }
+    /* Case */
+    .hotspot-case { top: 58%; left: 51.2%; }
+    /* Crown */
+    .hotspot-crown { top: 49.2%; left: 65.1%; }
+    /* Clasp */
+    .hotspot-clasp { top: 59.3%; left: 71.4%; }
+
+    .spec-popup{position:absolute;opacity:0;visibility:hidden;transition:opacity .25s ease;width:min(260px,58vw);background:#1f2937;color:#fff;padding:14px 16px;border-radius:8px;z-index:20;font-style:italic;font-size:15px;line-height:1.5}
+    .hotspot:hover .spec-popup{opacity:1;visibility:visible}
+    .popup-top{bottom:150%;left:50%;transform:translateX(-50%)}
+    .popup-right{top:50%;left:140%;transform:translateY(-50%)}
+    .popup-left{top:50%;right:140%;transform:translateY(-50%)}
+
+    /* keep popups inside on narrow screens */
+    @media (max-width:640px){
+      .popup-right{left:120%}
+      .popup-left{right:120%}
+    }
+  </style>
+</head>
+<body>
+  <h2 class="spec-headline">We're not going to list the specs.</h2>
+  <p class="spec-subheadline">You'll have to find them.</p>
+
+  <div class="interactive-spec-section">
+    <div class="watch-container">
+      <img src="watch-render.png" alt="ARIMA Steel watch render"/>
+
+    <div class="hotspot hotspot-case">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-left">
+        800&nbsp;Vickers on hardened steel. Doorframes fear you more than you fear them.
+      </div>
+    </div>
+
+    <div class="hotspot hotspot-crystal">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-top">
+        Sapphire with AR. Glare leaves; the dial stays.
+      </div>
+    </div>
+
+    <div class="hotspot hotspot-dial">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-right">
+        Textured white dial. Elegant, refined, <em>timeless</em>.
+      </div>
+    </div>
+
+    <div class="hotspot hotspot-lume">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-left">
+        Swiss Super-LumiNova. Night-shift friendly, midnight-snack safe.
+      </div>
+    </div>
+
+    <div class="hotspot hotspot-date">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-top">
+        Six-o'clock date. Subtle, centered, satisfying.
+      </div>
+    </div>
+
+    <div class="hotspot hotspot-crown">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-left">
+        Guarded crown. Because sleeves are ambush predators.
+      </div>
+    </div>
+
+    <div class="hotspot hotspot-clasp">
+      <div class="hotspot-pulse">+</div>
+      <div class="spec-popup popup-right">
+        Micro-adjust bracelet. Post-coffee, post-workout, still perfect.
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
