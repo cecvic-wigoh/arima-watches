@@ -133,6 +133,12 @@ export default function Home() {
               >
                 ABOUT
               </button>
+              <button
+                onClick={() => scrollToSection("features")}
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+              >
+                FEATURES
+              </button>
               <Link
                 href="/blogs"
                 className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
@@ -140,11 +146,23 @@ export default function Home() {
                 BLOGS
               </Link>
               <Link
+                href="/specs"
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+              >
+                SPECS
+              </Link>
+              <Link
                 href="/faq"
                 className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
               >
                 FAQ
               </Link>
+              <button
+                onClick={() => scrollToSection("cta")}
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+              >
+                CONTACT
+              </button>
             </nav>
 
             <button 
@@ -170,6 +188,15 @@ export default function Home() {
               >
                 ABOUT
               </button>
+              <button
+                onClick={() => {
+                  scrollToSection("features");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block w-full text-left text-gray-800 text-lg font-medium py-3 px-4 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+              >
+                FEATURES
+              </button>
               <Link
                 href="/blogs"
                 className="block w-full text-left text-gray-800 text-lg font-medium py-3 px-4 hover:bg-gray-100 rounded-lg transition-colors duration-300"
@@ -178,12 +205,28 @@ export default function Home() {
                 BLOGS
               </Link>
               <Link
+                href="/specs"
+                className="block w-full text-left text-gray-800 text-lg font-medium py-3 px-4 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                SPECS
+              </Link>
+              <Link
                 href="/faq"
                 className="block w-full text-left text-gray-800 text-lg font-medium py-3 px-4 hover:bg-gray-100 rounded-lg transition-colors duration-300"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 FAQ
               </Link>
+              <button
+                onClick={() => {
+                  scrollToSection("cta");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block w-full text-left text-gray-800 text-lg font-medium py-3 px-4 hover:bg-gray-100 rounded-lg transition-colors duration-300"
+              >
+                CONTACT
+              </button>
             </div>
           </div>
         )}
@@ -200,7 +243,7 @@ export default function Home() {
             preload="auto"
             className="absolute top-0 left-0 w-full h-full object-cover"
           >
-            <source src="/hero.mp4" type="video/mp4" />
+            <source src="/Heroloop.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div 
@@ -299,7 +342,7 @@ export default function Home() {
       </section>
 
       {/* Decagon Video Section */}
-      <section className="relative w-full min-h-screen overflow-hidden pb-16 lg:pb-24" style={{ background: '#000000' }}>
+      <section id="features" className="relative w-full min-h-screen overflow-hidden pb-16 lg:pb-24" style={{ background: '#000000' }}>
         <div className="relative w-full h-screen overflow-hidden">
           <video
             ref={decagonVideoRef}
@@ -372,30 +415,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Movement Video Section */}
-      <section className="relative w-full min-h-screen overflow-hidden pt-16 lg:pt-24 pb-16 lg:pb-24" style={{ background: '#000000' }}>
-        <div className="relative w-full h-screen overflow-hidden">
-          <video
-            ref={movementVideoRef}
-            muted
-            playsInline
-            preload="auto"
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          >
-            <source src="/movement.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center px-8 z-10">
-            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-10 font-bold uppercase tracking-wider">
-              The Movement: Soprod P024 / La Joux Perret G100
-            </h2>
-            <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-loose max-w-3xl mx-auto">
-              Swiss. Reliable. Serviceable. Regulated during Assembly. With COSC Option.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* 11MM Video Section */}
       <section className="relative w-full min-h-screen overflow-hidden pt-16 lg:pt-24 pb-16 lg:pb-24" style={{ background: '#000000' }}>
         <div className="relative w-full h-screen overflow-hidden">
@@ -445,12 +464,87 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Movement Video Section - Split Layout */}
+      <section className="relative min-h-screen overflow-hidden py-24 lg:py-40" style={{ background: '#000000' }}>
+        <div className="relative z-20 h-full flex items-center">
+          <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
+            {/* Mobile Layout - Stacked */}
+            <div className="block lg:hidden">
+              <div className="mb-12">
+                <video
+                  ref={movementVideoRef}
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="w-full h-auto rounded-2xl shadow-2xl"
+                >
+                  <source src="/movement.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="text-center">
+                <h2 className="text-white text-3xl sm:text-4xl md:text-5xl mb-8 font-bold uppercase tracking-wider">
+                  The Movement: Soprod P024 / La Joux Perret G100
+                </h2>
+                <p className="text-white text-lg sm:text-xl md:text-2xl leading-loose max-w-3xl mx-auto">
+                  Swiss. Reliable. Serviceable. Regulated during Assembly. With COSC Option.
+                </p>
+              </div>
+            </div>
+
+            {/* Desktop Layout - Side by side */}
+            <div className="hidden lg:flex items-center justify-center gap-16 xl:gap-24">
+              {/* Left side - Video */}
+              <div className="flex-[1.5] flex justify-center">
+                <div className="relative w-full">
+                  <video
+                    ref={movementVideoRef}
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="w-full h-auto rounded-3xl shadow-2xl"
+                  >
+                    <source src="/movement.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+
+              {/* Right side - Text content */}
+              <div className="flex-1 max-w-2xl">
+                <h2 className="text-white text-4xl xl:text-6xl mb-12 font-bold uppercase tracking-wider">
+                  The Movement: Soprod P024 / La Joux Perret G100
+                </h2>
+                <p className="text-white text-xl xl:text-2xl leading-loose">
+                  Swiss. Reliable. Serviceable. Regulated during Assembly. With COSC Option.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bracelet Section */}
+      <section className="relative min-h-screen overflow-hidden" style={{ background: '#000000' }}>
+        <div className="relative z-20 h-full flex items-center">
+          <div className="w-full">
+            <Image
+              src="/bracelet_close.jpg"
+              alt="Bracelet Close-up"
+              width={1920}
+              height={1080}
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Spec Sheet Section */}
       <section className="relative py-24 lg:py-40 overflow-hidden" style={{ background: '#000000' }}>
         <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
           <div className="flex justify-center items-center">
             <Image
-              src="/specsheet.png"
+              src="/Updated_SpecSheet.jpeg"
               alt="Arima Watch Specifications"
               width={1200}
               height={800}
