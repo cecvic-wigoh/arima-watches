@@ -180,7 +180,7 @@ export default function FAQPage() {
                 className="absolute left-0 flex-shrink-0 hover:opacity-80 transition-opacity duration-300"
               >
                 <Image
-                  src="/logo-new.png"
+                  src="/logo-new.webp"
                   alt="Arima Logo"
                   width={200}
                   height={66}

@@ -11,11 +11,11 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const dials = [
-    { name: "Fog", src: "/Dials/fog.jpg" },
-    { name: "Ice", src: "/Dials/ice.jpg" },
-    { name: "Moss", src: "/Dials/moss.jpg" },
-    { name: "Night Sky", src: "/Dials/night-sky.jpg" },
-    { name: "Slate", src: "/Dials/slate.jpg" },
+    { name: "Fog", src: "/Dials/fog.webp" },
+    { name: "Ice", src: "/Dials/ice.webp" },
+    { name: "Moss", src: "/Dials/moss.webp" },
+    { name: "Night Sky", src: "/Dials/night-sky.webp" },
+    { name: "Slate", src: "/Dials/slate.webp" },
   ];
   const [currentDialIndex, setCurrentDialIndex] = useState(dials.length); // Start in middle for infinite scroll
 
@@ -114,7 +114,7 @@ export default function Home() {
               className="absolute left-0 flex-shrink-0 hover:opacity-80 transition-opacity duration-300"
             >
               <Image
-                src="/logo-new.png"
+                src="/logo-new.webp"
                 alt="Arima Logo"
                 width={200}
                 height={66}
@@ -280,7 +280,7 @@ export default function Home() {
               </h2>
               <div className="mb-12">
                 <Image
-                  src="/hero-2.jpeg"
+                  src="/hero-2.webp"
                   alt="About Arima"
                   width={400}
                   height={300}
@@ -307,7 +307,7 @@ export default function Home() {
               <div className="flex-1 flex justify-center">
                 <div className="relative">
                   <Image
-                    src="/hero-2.jpeg"
+                    src="/hero-2.webp"
                     alt="About Arima"
                     width={500}
                     height={400}
@@ -491,25 +491,27 @@ export default function Home() {
             </div>
 
             {/* Desktop Layout - Side by side */}
-            <div className="hidden lg:flex items-center justify-center gap-16 xl:gap-24">
+            <div className="hidden lg:flex items-stretch justify-center gap-16 xl:gap-24">
               {/* Left side - Video */}
-              <div className="flex-[1.5] flex justify-center">
-                <div className="relative w-full">
-                  <video
-                    ref={movementVideoRef}
-                    muted
-                    playsInline
-                    preload="auto"
-                    className="w-full h-auto rounded-3xl shadow-2xl"
-                  >
-                    <source src="/movement.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+              <div className="flex-1 flex justify-center">
+                <div className="relative w-full overflow-hidden rounded-3xl shadow-2xl" style={{ maxWidth: '480px' }}>
+                  <div className="aspect-[3/4] relative overflow-hidden">
+                    <video
+                      ref={movementVideoRef}
+                      muted
+                      playsInline
+                      preload="auto"
+                      className="absolute inset-0 w-full h-full object-cover object-center scale-150"
+                    >
+                      <source src="/movement.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </div>
               </div>
 
               {/* Right side - Text content */}
-              <div className="flex-1 max-w-2xl">
+              <div className="flex-1 max-w-2xl flex flex-col justify-center">
                 <h2 className="text-white text-4xl xl:text-6xl mb-12 font-bold uppercase tracking-wider">
                   The Movement: Soprod P024 / La Joux Perret G100
                 </h2>
@@ -525,14 +527,22 @@ export default function Home() {
       {/* Bracelet Section */}
       <section className="relative min-h-screen overflow-hidden" style={{ background: '#000000' }}>
         <div className="relative z-20 h-full flex items-center">
-          <div className="w-full">
+          <div className="w-full relative">
             <Image
-              src="/bracelet_close.jpg"
+              src="/bracelet_close.webp"
               alt="Bracelet Close-up"
               width={1920}
               height={1080}
               className="w-full h-auto"
             />
+            <div className="absolute inset-0 flex flex-col items-end justify-start text-right pt-12 sm:pt-16 lg:pt-24 pr-8 sm:pr-12 lg:pr-24">
+              <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 font-bold uppercase tracking-wider" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>
+                Ladder Bracelet
+              </h2>
+              <p className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-loose" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.6)' }}>
+                A small nod to the ascent
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -542,7 +552,7 @@ export default function Home() {
         <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
           <div className="flex justify-center items-center">
             <Image
-              src="/Updated_SpecSheet.jpeg"
+              src="/Updated_SpecSheet.webp"
               alt="Arima Watch Specifications"
               width={1200}
               height={800}
@@ -648,18 +658,57 @@ export default function Home() {
       {/* Where is it Made Section */}
       <section className="relative py-24 lg:py-40 overflow-hidden" style={{ background: '#000000' }}>
         <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
-          <div className="text-center mb-16">
-            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-12 font-bold uppercase tracking-wider">
+          {/* Mobile Layout - Stacked */}
+          <div className="block lg:hidden text-center">
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-12 font-bold uppercase tracking-wider">
               Where is it Made
             </h2>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-6 text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+            <div className="mb-12">
+              <Image
+                src="/Hero 1.webp"
+                alt="Arima Watch"
+                width={400}
+                height={400}
+                className="object-cover rounded-2xl w-full max-w-md mx-auto shadow-2xl"
+              />
+            </div>
+            <div className="space-y-4 text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
               <p>Swiss movement.</p>
               <p>Swiss regulation.</p>
               <p>Swiss assembly — so we can oversee what matters.</p>
               <p>Cases, bracelets, and hands from leading manufacturers in China.</p>
               <p className="font-bold mt-8">Capability over geography.</p>
+            </div>
+          </div>
+
+          {/* Desktop Layout - Side by side */}
+          <div className="hidden lg:flex items-stretch justify-center gap-16 xl:gap-24">
+            {/* Left side - Image */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative w-full overflow-hidden rounded-3xl shadow-2xl" style={{ maxWidth: '480px' }}>
+                <div className="aspect-[3/4] relative overflow-hidden">
+                  <Image
+                    src="/Hero 1.webp"
+                    alt="Arima Watch"
+                    fill
+                    className="object-cover object-center scale-150"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - Text content */}
+            <div className="flex-1 max-w-2xl flex flex-col justify-center">
+              <h2 className="text-white text-5xl xl:text-7xl mb-12 font-bold uppercase tracking-wider">
+                Where is it Made
+              </h2>
+              <div className="space-y-6 text-white text-xl xl:text-2xl leading-relaxed">
+                <p>Swiss movement.</p>
+                <p>Swiss regulation.</p>
+                <p>Swiss assembly — so we can oversee what matters.</p>
+                <p>Cases, bracelets, and hands from leading manufacturers in China.</p>
+                <p className="font-bold mt-8">Capability over geography.</p>
+              </div>
             </div>
           </div>
         </div>
