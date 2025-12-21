@@ -9,7 +9,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   const dials = [
     { name: "Fog", src: "/Dials/fog.jpg" },
     { name: "Ice", src: "/Dials/ice.jpg" },
@@ -18,7 +18,7 @@ export default function Home() {
     { name: "Slate", src: "/Dials/slate.jpg" },
   ];
   const [currentDialIndex, setCurrentDialIndex] = useState(dials.length); // Start in middle for infinite scroll
-  
+
   // Refs for video elements
   const decagonVideoRef = useRef<HTMLVideoElement>(null);
   const dialVideoRef = useRef<HTMLVideoElement>(null);
@@ -105,12 +105,11 @@ export default function Home() {
   return (
     <div className="min-h-screen font-bolyar" style={{ background: '#000000' }}>
       {/* Fixed Header Navigation */}
-      <header className={`fixed top-0 left-0 right-0 z-[60] border-b border-white/20 transition-all duration-300 ${
-        isScrolled ? 'bg-white/10 backdrop-blur-md' : 'bg-transparent'
-      }`}>
+      <header className={`fixed top-0 left-0 right-0 z-[60] border-b border-white/20 transition-all duration-300 ${isScrolled ? 'bg-white/10 backdrop-blur-md' : 'bg-gradient-to-b from-black/40 to-transparent'
+        }`}>
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-center h-16 sm:h-20 relative">
-            <button 
+            <button
               onClick={() => scrollToSection("hero")}
               className="absolute left-0 flex-shrink-0 hover:opacity-80 transition-opacity duration-300"
             >
@@ -119,53 +118,52 @@ export default function Home() {
                 alt="Arima Logo"
                 width={200}
                 height={66}
-                className="object-contain h-8 sm:h-10 lg:h-12 w-auto"
+                className="object-contain h-8 sm:h-10 lg:h-12 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
                 priority
               />
             </button>
 
-            <nav className="hidden md:flex items-center gap-4 sm:gap-6 lg:gap-8">
+            <nav className="hidden md:flex items-center gap-4 sm:gap-6 lg:gap-8" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
               <button
                 onClick={() => scrollToSection("about")}
-                className={`text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 ${
-                  activeSection === "about" ? "text-white" : "text-white/70 hover:text-white"
-                }`}
+                className={`text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 ${activeSection === "about" ? "text-white" : "text-white/80 hover:text-white"
+                  }`}
               >
                 ABOUT
               </button>
               <button
                 onClick={() => scrollToSection("features")}
-                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/80 hover:text-white"
               >
                 FEATURES
               </button>
               <Link
                 href="/blogs"
-                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/80 hover:text-white"
               >
                 BLOGS
               </Link>
               <Link
                 href="/specs"
-                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/80 hover:text-white"
               >
                 SPECS
               </Link>
               <Link
                 href="/faq"
-                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/80 hover:text-white"
               >
                 FAQ
               </Link>
               <button
                 onClick={() => scrollToSection("cta")}
-                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/70 hover:text-white"
+                className="text-sm sm:text-base lg:text-lg font-medium transition-all duration-300 hover:scale-105 text-white/80 hover:text-white"
               >
                 CONTACT
               </button>
             </nav>
 
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="absolute right-0 md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-300"
             >
@@ -246,7 +244,7 @@ export default function Home() {
             <source src="/Heroloop.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div 
+          <div
             className="absolute bottom-0 left-0 w-full flex flex-col items-center text-center px-8 pb-16 lg:pb-24"
             style={{ background: 'linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), transparent)' }}
           >
@@ -567,7 +565,7 @@ export default function Home() {
           {/* Slideshow Carousel - 3 Images Side by Side */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl">
-              <div 
+              <div
                 className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentDialIndex * (100 / 3)}%)` }}
               >
@@ -636,6 +634,135 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
+          </div>
+
+          {/* Render Disclaimer */}
+          <div className="mt-12 text-center">
+            <p className="text-white/60 text-sm sm:text-base italic">
+              The images shown are renders. We are working on prototypes at the moment. We will update as soon as we have updates.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Where is it Made Section */}
+      <section className="relative py-24 lg:py-40 overflow-hidden" style={{ background: '#000000' }}>
+        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="text-center mb-16">
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-12 font-bold uppercase tracking-wider">
+              Where is it Made
+            </h2>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="space-y-6 text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+              <p>Swiss movement.</p>
+              <p>Swiss regulation.</p>
+              <p>Swiss assembly — so we can oversee what matters.</p>
+              <p>Cases, bracelets, and hands from leading manufacturers in China.</p>
+              <p className="font-bold mt-8">Capability over geography.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="relative py-24 lg:py-40 overflow-hidden" style={{ background: '#000000' }}>
+        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="text-center mb-16">
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-12 font-bold uppercase tracking-wider">
+              Pricing
+            </h2>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="space-y-6 text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+              <p>2–3× manufacturing cost.</p>
+              <p>Covers QC, warranty, development.</p>
+              <p>Nothing inflated.</p>
+              <p className="font-bold">Nothing hidden.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* THE FIRST 300 — CO-FOUNDERS Section */}
+      <section id="cta" className="relative py-24 lg:py-40 overflow-hidden" style={{ background: '#000000' }}>
+        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="text-center mb-16">
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 font-bold uppercase tracking-wider">
+              THE FIRST 300 — CO-FOUNDERS
+            </h2>
+            <p className="text-white/80 text-lg sm:text-xl md:text-2xl mb-8">
+              The first 300 aren&apos;t customers.
+            </p>
+            <p className="text-white text-lg sm:text-xl md:text-2xl mb-12">
+              They help shape the future of the brand.
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            {/* Benefits */}
+            <div className="space-y-4 text-white text-lg sm:text-xl md:text-2xl leading-relaxed mb-12">
+              <p>✓ Lifetime pricing*</p>
+              <p>✓ Early Access</p>
+              <p>✓ Input on future models</p>
+              <p>✓ Wall of Fame on Website</p>
+            </div>
+
+            <p className="text-white/80 text-lg sm:text-xl mb-12 text-center">
+              If you want to influence what comes next, start here.
+            </p>
+
+            {/* Signup Form */}
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 sm:p-12 border border-white/10">
+              <h3 className="text-white text-2xl sm:text-3xl font-bold mb-8 text-center">
+                Signup
+              </h3>
+              <form className="space-y-6">
+                <div>
+                  <label htmlFor="email" className="block text-white text-sm sm:text-base mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors duration-300"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="building" className="block text-white text-sm sm:text-base mb-2">
+                    What are you currently building or striving toward?
+                  </label>
+                  <input
+                    type="text"
+                    id="building"
+                    name="building"
+                    placeholder="company, career, craft, personal goal — one line"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors duration-300"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full py-4 bg-white text-black font-bold text-lg rounded-lg hover:bg-white/90 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  Join the First 300
+                </button>
+              </form>
+            </div>
+
+            {/* Lifetime Discount Info */}
+            <div className="mt-12 text-center">
+              <p className="text-white/60 text-sm sm:text-base mb-4">
+                * Lifetime Discount Tiers:
+              </p>
+              <div className="space-y-2 text-white/80 text-sm sm:text-base">
+                <p><span className="font-bold text-white">20% off</span> — For the first 50</p>
+                <p><span className="font-bold text-white">15% off</span> — For the next 100</p>
+                <p><span className="font-bold text-white">10% off</span> — For the last 150</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
