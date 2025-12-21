@@ -572,8 +572,73 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Slideshow Carousel - 3 Images Side by Side */}
-          <div className="relative">
+          {/* Mobile Carousel - 1 image at a time */}
+          <div className="block md:hidden relative">
+            <div className="relative overflow-hidden rounded-2xl">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${(currentDialIndex % dials.length) * 100}%)` }}
+              >
+                {dials.map((dial, index) => (
+                  <div
+                    key={index}
+                    className="min-w-full flex-shrink-0 px-2"
+                  >
+                    <div className="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10">
+                      <div className="relative aspect-[3/4] w-full">
+                        <Image
+                          src={dial.src}
+                          alt={`${dial.name} Dial`}
+                          fill
+                          className="object-cover"
+                          sizes="100vw"
+                        />
+                      </div>
+                      <div className="p-4 text-center">
+                        <h3 className="text-white text-lg font-semibold">{dial.name}</h3>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Navigation Arrows */}
+            <button
+              onClick={() => setCurrentDialIndex((prev) => (prev - 1 + dials.length) % dials.length)}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full p-3 transition-all duration-300"
+              aria-label="Previous dial"
+            >
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setCurrentDialIndex((prev) => (prev + 1) % dials.length)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full p-3 transition-all duration-300"
+              aria-label="Next dial"
+            >
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Dots Indicator for Mobile */}
+            <div className="flex justify-center gap-2 mt-6">
+              {dials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentDialIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${(currentDialIndex % dials.length) === index ? 'bg-white w-6' : 'bg-white/40'
+                    }`}
+                  aria-label={`Go to dial ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Carousel - 3 images side by side */}
+          <div className="hidden md:block relative">
             <div className="relative overflow-hidden rounded-2xl">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
@@ -589,13 +654,13 @@ export default function Home() {
                     className="min-w-[33.333%] flex-shrink-0 px-4"
                   >
                     <div className="bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10">
-                      <div className="relative aspect-square w-full">
+                      <div className="relative aspect-[3/4] w-full">
                         <Image
                           src={dial.src}
                           alt={`${dial.name} Dial`}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 768px) 33vw, 33vw"
+                          sizes="(max-width: 768px) 100vw, 33vw"
                         />
                       </div>
                       <div className="p-6 text-center">
@@ -607,12 +672,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Desktop Navigation Arrows */}
             <button
               onClick={() => {
                 setCurrentDialIndex((prev) => {
                   const newIndex = prev - 1;
-                  // If we go below the first set, jump to the last set for infinite scroll
                   if (newIndex < 0) {
                     return dials.length * 2 - 1;
                   }
@@ -630,7 +694,6 @@ export default function Home() {
               onClick={() => {
                 setCurrentDialIndex((prev) => {
                   const newIndex = prev + 1;
-                  // If we go beyond the last set, jump to the first set for infinite scroll
                   if (newIndex >= dials.length * 2) {
                     return 0;
                   }
