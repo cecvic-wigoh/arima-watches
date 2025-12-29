@@ -9,7 +9,8 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const [isSpecsZoomed, setIsSpecsZoomed] = useState(false);
+  
   const dials = [
     { name: "Fog", src: "/Dials/fog.webp" },
     { name: "Ice", src: "/Dials/ice.webp" },
@@ -252,7 +253,7 @@ export default function Home() {
               For Men Forging Their Ascent.
             </h1>
             <p className="text-white text-base sm:text-lg md:text-xl opacity-80 mb-12 tracking-wide">
-              Digital watches are smart. Ours have a soul.
+              
             </p>
           </div>
         </div>
@@ -549,18 +550,49 @@ export default function Home() {
 
       {/* Spec Sheet Section */}
       <section className="relative py-24 lg:py-40 overflow-hidden" style={{ background: '#000000' }}>
-        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-16">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex justify-center items-center">
-            <Image
-              src="/Updated_SpecSheet.webp"
-              alt="Arima Watch Specifications"
-              width={1200}
-              height={800}
-              className="w-full h-auto max-w-4xl rounded-lg shadow-2xl"
-              priority
-            />
+            <div className="relative w-full">
+              <Image
+                src="/Updated_SpecSheet.jpeg"
+                alt="Arima Watch Specifications"
+                width={1920}
+                height={1280}
+                className="w-full h-auto rounded-lg shadow-2xl cursor-zoom-in transition-transform duration-300 hover:scale-[1.02]"
+                onClick={() => setIsSpecsZoomed(true)}
+                priority
+              />
+            </div>
           </div>
         </div>
+
+        {/* Zoomed Overlay Modal */}
+        {isSpecsZoomed && (
+          <div
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+            onClick={() => setIsSpecsZoomed(false)}
+          >
+            <div className="relative w-full h-full flex items-center justify-center">
+              <Image
+                src="/specsheet.png"
+                alt="Arima Watch Specifications - Zoomed"
+                width={1920}
+                height={1280}
+                className="max-w-full max-h-full w-auto h-auto object-contain"
+                priority
+              />
+              <button
+                onClick={() => setIsSpecsZoomed(false)}
+                className="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full p-3 transition-all duration-300"
+                aria-label="Close zoom"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Dials Section */}
