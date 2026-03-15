@@ -13,23 +13,46 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arima - Swiss-Inspired Timepieces",
-  description: "Discover the exceptional craftsmanship and innovative technology of Swiss-inspired timepieces. Built for the journey with 316L steel, Swiss automatic movement, and Alpine precision",
+  metadataBase: new URL("https://www.arimawatches.com"),
+  title: {
+    default: "Arima - Swiss-Inspired Timepieces",
+    template: "%s | Arima Watches",
+  },
+  description:
+    "Discover the exceptional craftsmanship and innovative technology of Swiss-inspired timepieces. Built for the journey with 316L steel, Swiss automatic movement, and Alpine precision.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Arima Watches",
+    title: "Arima - Swiss-Inspired Timepieces",
+    description:
+      "Swiss-inspired timepieces built for the journey. 316L steel, Swiss automatic movement, and Alpine precision.",
+    url: "https://www.arimawatches.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arima - Swiss-Inspired Timepieces",
+    description:
+      "Swiss-inspired timepieces built for the journey. 316L steel, Swiss automatic movement, and Alpine precision.",
+  },
+  alternates: {
+    canonical: "https://www.arimawatches.com",
+  },
   icons: {
     icon: [
       {
-        url: '/favicon.ico',
-        sizes: 'any',
-        type: 'image/x-icon',
+        url: "/favicon.ico",
+        sizes: "any",
+        type: "image/x-icon",
       },
       {
-        url: '/logo-new.png',
-        sizes: 'any',
-        type: 'image/webp',
+        url: "/logo-new.png",
+        sizes: "any",
+        type: "image/webp",
       },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/logo-new.png',
+    shortcut: "/favicon.ico",
+    apple: "/logo-new.png",
   },
 };
 

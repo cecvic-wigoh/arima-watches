@@ -1,11 +1,14 @@
-"use client";
+import type { Metadata } from "next";
+import DemoClient from "./DemoClient";
 
-import WatchGallery from "@/components/ui/watch-gallery";
+export const metadata: Metadata = {
+  title: "Watch Gallery",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function DemoPage() {
-  return (
-    <div className="min-h-screen font-bolyar">
-      <WatchGallery />
-    </div>
-  );
+  return <DemoClient />;
 }
