@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import CookieConsent from "@/components/gdpr/CookieConsent";
+import VendastaForm from "@/components/VendastaForm";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -861,39 +862,7 @@ export default function Home() {
               <h3 className="text-white text-2xl sm:text-3xl font-bold mb-8 text-center">
                 Signup
               </h3>
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="email" className="block text-white text-sm sm:text-base mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors duration-300"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="building" className="block text-white text-sm sm:text-base mb-2">
-                    What are you currently building or striving toward?
-                  </label>
-                  <input
-                    type="text"
-                    id="building"
-                    name="building"
-                    placeholder="company, career, craft, personal goal — one line"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors duration-300"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-white text-black font-bold text-lg rounded-lg hover:bg-white/90 transition-all duration-300 hover:scale-[1.02]"
-                >
-                  Join the First 300
-                </button>
-              </form>
+              <VendastaForm />
             </div>
 
             {/* Lifetime Discount Info */}
