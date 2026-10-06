@@ -18,10 +18,10 @@ const SHOW_UNDER_CONSTRUCTION =
 
 export const metadata: Metadata = {
   title: SHOW_UNDER_CONSTRUCTION
-    ? "Under Construction | Arima Watches - Swiss-Inspired Timepieces"
+    ? "Under Construction | Arima Watches - Mountain-Inspired Timepieces"
     : "Arima - Swiss-Inspired Timepieces",
   description: SHOW_UNDER_CONSTRUCTION
-    ? "Arima is currently forging its ascent. Sign up to join the First 300 founding members and gain early access to our Swiss-inspired timepieces."
+    ? "Arima is currently forging its ascent. Sign up to join the First 300 founding members and gain early access to our mountain-inspired timepieces."
     : "Discover Arima's Swiss-inspired timepieces. Crafted with 316L steel, Swiss automatic movement, sapphire crystal, and Alpine precision. Built for the journey.",
   alternates: {
     canonical: "https://www.arimawatches.com",

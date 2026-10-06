@@ -2,50 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import CookieConsent from "@/components/gdpr/CookieConsent";
 import VendastaForm from "@/components/VendastaForm";
-import {
-  ShieldCheck,
-  Sparkles,
-  Award,
-  Layers,
-  Compass,
-  CheckCircle2,
-  Lock,
-} from "lucide-react";
+import { Compass } from "lucide-react";
 
 export default function UnderConstructionClient() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay policy fallback
-      });
-    }
-  }, []);
-
   return (
     <div className="relative min-h-screen bg-black text-white font-bolyar selection:bg-white/20 selection:text-white flex flex-col justify-between overflow-x-hidden">
-      {/* Background Video with Cinematic Dark Gradient */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/Hero 1.webp"
-          className="absolute top-0 left-0 w-full h-full object-cover scale-105 filter brightness-75 contrast-110"
-        >
-          <source src="/Heroloop.mp4" type="video/mp4" />
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        {/* Layered Gradient Overlays for contrast and luxury aesthetic */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/95" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-black/80" />
+      {/* Ambient Luxury Dark Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[#000000]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.12),rgba(255,255,255,0))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(30,41,59,0.25),transparent_50%)]" />
       </div>
 
       {/* Header */}
@@ -83,7 +51,7 @@ export default function UnderConstructionClient() {
           {/* Eyebrow badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-xs sm:text-sm tracking-widest uppercase">
             <Compass className="w-4 h-4 text-white/60" />
-            <span>Swiss-Inspired Mechanical Timepieces</span>
+            <span>Mountain-Inspired Mechanical Timepieces</span>
           </div>
 
           {/* Heading */}
